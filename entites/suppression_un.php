@@ -2,15 +2,15 @@
 
 try {
    
-$dbh = new PDO('mysql:host=localhost;dbname='.$db, $user, $pass);
+$dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
 
-$stmt = $dbh->prepare("DELETE FROM metamodele WHERE id = :id");
+$stmt = $dbh->prepare("DELETE FROM test WHERE id = :id");
 
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
 $stmt->execute();
 
-$stmt = $dbh->prepare("SELECT *FROM metamodele  ORDER BY id");
+$stmt = $dbh->prepare("SELECT *FROM test  ORDER BY id");
         
 $stmt->execute();
         
@@ -19,7 +19,7 @@ $datas = array();
         while($resultat=$stmt->fetch(PDO::FETCH_ASSOC)) 
             {
                 $datas["code"]  = 200;
-                $datas['metamodele'][]=$resultat;
+                $datas['test'][]=$resultat;
             }
                 
 

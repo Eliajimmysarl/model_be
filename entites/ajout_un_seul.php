@@ -1,45 +1,83 @@
 <?php
 
-//Recuperer le flux JSON envoyer
-$myjson=file_get_contents('php://input');
+    $myjson=file_get_contents('php://input');
 
-//Decoder le flux JSON
-$json_decode= json_decode($myjson);
+    $json_decode= json_decode($myjson);
 
+    $text=$json_decode->text;
 
-$tde1=$json_decode->tde1; //prenom
-$tde2=$json_decode->tde2; //nom
-$tde3=$json_decode->tde3; //postnom
+    $select=$json_decode->select; 
 
-//Insertion dans la base des données
-try {
-$dbh = new PDO('mysql:host=localhost;dbname='.$db, $user, $pass);
-$stmt = $dbh->prepare("INSERT INTO metamodele (tde1, tde2, tde3) VALUES (?,?,?)");
-$stmt->bindParam(1, $tde1);
-$stmt->bindParam(2, $tde2);
-$stmt->bindParam(3, $tde3);
+    $date=$json_decode->date; 
 
+    $telephone=$json_decode->telephone; 
 
+    $email=$json_decode->email; 
 
-$stmt->execute();
+    $password=$json_decode->password; 
 
-$last = $dbh->lastInsertId();
-$retour = array();
-$data["code"]  = 201;
-$data["id"]  = "$last";
-$data["tde1"]  = "$tde1";
-$data["tde2"]  = "$tde2";
-$data["tde3"]  = "$tde3";
-$data["reponse"]  = "Le metamodele $tde1 $tde2 avec l'id $id est cree";
+    $optionsRadios=$json_decode->optionsRadios;
 
-echo json_encode( $data );
-  
-  
-    $dbh = null;
+    try {
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+
+            $stmt = $dbh->prepare("INSERT INTO test (text, select, date, telephone, email, password, optionsRadios) VALUES (?,?,?,?,?,?,?)");
+
+            $stmt->bindParam(1, $text);
+
+            $stmt->bindParam(2, $select);
+
+            $stmt->bindParam(3, $date);
+
+            $stmt->bindParam(4, $telephone);
+
+            $stmt->bindParam(5, $email);
+
+            $stmt->bindParam(6, $password);
+
+            $stmt->bindParam(7, $optionsRadios);
+
+            $stmt->execute();
+
+            $last = $dbh->lastInsertId();
+
+            if($last==0)
+                {
+                    $data["code"]  = 400;
+
+                    $data["message"]  = "Ressource not created";
+                }
+            else
+                {
+                    $data["code"]  = 201;
+
+                    $data["id"]  = "$last";
+
+                    $data["text"]  = "$text";
+
+                    $data["select"]  = "$select";
+
+                    $data["email"]  = "$email";
+
+                    $data["date"]  = "$date";
+
+                    $data["telephone"]  = "$telephone";
+
+                    $data["optionsRadios"]  = "$optionsRadios";
+
+                    $data["reponse"]  = "Le test $text $select avec l'id $id est cree";  
+                }
+            
+            echo json_encode( $data );
         
-    }
-catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-}
+            $dbh = null; 
+        }
+
+    catch (PDOException $e) 
+        {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+
+            die();
+
+        }
 ?>
