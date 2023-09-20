@@ -77,7 +77,7 @@
         {
             print "Erreur !: " . $e->getMessage() . "<br/>";
 
-            die();
+            die();
 
         }
 ?>
