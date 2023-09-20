@@ -1,0 +1,5 @@
+Options +FollowSymlinks
+
+RewriteEngine On
+
+RewriteRule ^entites/([0-9]+)$ /entites/index.php?id=$1 [L]
