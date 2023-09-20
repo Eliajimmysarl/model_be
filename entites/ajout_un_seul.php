@@ -4,36 +4,36 @@
 
     $json_decode= json_decode($myjson);
 
-    $text=$json_decode->text;
+    $texte=$json_decode->texte;
 
-    $select=$json_decode->select; 
+    $selec=$json_decode->selec; 
 
-    $date=$json_decode->date; 
+    $dates=$json_decode->dates; 
 
     $telephone=$json_decode->telephone; 
 
     $email=$json_decode->email; 
 
-    $password=$json_decode->password; 
+    $passwords=$json_decode->passwords; 
 
     $optionsRadios=$json_decode->optionsRadios;
 
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
 
-            $stmt = $dbh->prepare("INSERT INTO test (text, select, date, telephone, email, password, optionsRadios) VALUES (?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO test (texte, selec, dates, telephone, email, passwords, optionsRadios) VALUES (?,?,?,?,?,?,?)");
 
-            $stmt->bindParam(1, $text);
+            $stmt->bindParam(1, $texte);
 
-            $stmt->bindParam(2, $select);
+            $stmt->bindParam(2, $selec);
 
-            $stmt->bindParam(3, $date);
+            $stmt->bindParam(3, $dates);
 
             $stmt->bindParam(4, $telephone);
 
             $stmt->bindParam(5, $email);
 
-            $stmt->bindParam(6, $password);
+            $stmt->bindParam(6, $passwords);
 
             $stmt->bindParam(7, $optionsRadios);
 
@@ -53,13 +53,13 @@
 
                     $data["id"]  = "$last";
 
-                    $data["text"]  = "$text";
+                    $data["text"]  = "$texte";
 
-                    $data["select"]  = "$select";
+                    $data["select"]  = "$selec";
 
                     $data["email"]  = "$email";
 
-                    $data["date"]  = "$date";
+                    $data["date"]  = "$dates";
 
                     $data["telephone"]  = "$telephone";
 
