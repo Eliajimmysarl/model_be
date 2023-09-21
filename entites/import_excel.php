@@ -24,7 +24,7 @@
 
                             $sep=explode(";",$exp);
 
-                            $count = 0;^
+                            $count = 0;
 
                             $data=array();
 
