@@ -34,6 +34,10 @@
                 { 
                     require_once("ajout_plusieurs.php"); 
                 }
+            else if(isSet($_GET['excel']))
+                { 
+                    require_once("import_excel.php"); 
+                }
             else
                 {
                     require_once("ajout_un_seul.php");   
