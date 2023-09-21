@@ -83,7 +83,7 @@
             
                             $data["message"]  = "Ressource not created";
 
-                            $data["excel"]  = $donnee;
+                            $data["excel"]  = $texte ;
                         }
                     else
                         {
