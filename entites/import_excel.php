@@ -79,7 +79,7 @@
             
                             $data["message"]  = "Ressource not created";
 
-                            $data["excel"]  = $dates ;
+                            $data["excel"]  = $donnee ;
                         }
                     else
                         {
