@@ -32,11 +32,11 @@
                     
                                     $telephone = addslashes($sep[1]);
 
-                                    $email = addslashes($sep[0]);
+                                    $email = addslashes($sep[2]);
                     
-                                    $passwords = addslashes($sep[1]);
+                                    $passwords = addslashes($sep[3]);
 
-                                    $optionsRadios = addslashes($sep[0]);
+                                    $optionsRadios = addslashes($sep[4]);
         
                                     $stmt = $dbh->prepare("INSERT INTO test (texte, selec, dates, telephone, email, passwords, optionsRadios) VALUES (?,?,?,?,?,?,?)");
 
