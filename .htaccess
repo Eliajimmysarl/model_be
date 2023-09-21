@@ -3,3 +3,5 @@ Options +FollowSymlinks
 RewriteEngine On
 
 RewriteRule ^entites/([0-9]+)$ /entites/index.php?id=$1 [L]
+
+RewriteRule ^entites/plusieurs/$ /entites/index.php?plusieurs=oui [L]

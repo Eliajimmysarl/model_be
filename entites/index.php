@@ -15,26 +15,29 @@
                 {
                     require_once("modification_un.php"); 
                 }
-                
             else if($methode=='GET')
                 {
                     require_once("recuperation_un.php");   
                 }
-                
             else if($methode=='DELETE')
                 {
                     require_once("suppression_un.php");        
                 }
-                
             else
                 {
                     echo" Erreur 400 :  Votre requete est POST et a un parametre id dans l'URL ";     
                 }
         }
-    
     else if($methode=='POST')
         {
-            require_once("ajout_un_seul.php"); 
+            if(isSet($_GET['plusieurs']))
+                { 
+                    require_once("ajout_plusieurs.php"); 
+                }
+            else
+                {
+                    require_once("ajout_un_seul.php");   
+                }
         }
     else if($methode=='GET')
         {
