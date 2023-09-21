@@ -17,9 +17,9 @@
 
                     $stmt = $dbh->prepare("INSERT INTO test (texte, selec) VALUES (?,?)");
 
-                    $stmt->bindParam(1, $texte);
+                    $stmt->bindParam(1, $text);
         
-                    $stmt->bindParam(2, $selec);  
+                    $stmt->bindParam(2, $select);  
 
                     $stmt->execute();
                 }
