@@ -70,8 +70,6 @@
 
                                     $donnee[$i]['optionsRadios']=$optionsRadios;
 
-                                    $data["excel"][]  = $donnee ;
-
                                     $last = $dbh->lastInsertId();
               
                                     if($last==0)
@@ -86,6 +84,7 @@
                             
                                             $data["message"]  = "Ressource created";
                                         }
+                                    $data["excel"][]  = $donnee ;
                                 }
                         }
                         
