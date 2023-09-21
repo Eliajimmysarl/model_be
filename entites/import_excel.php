@@ -7,29 +7,27 @@
     $file = $_FILES["excel"]["tmp_name"];
                     
     $fileName = $_FILES["excel"]["name"];
-                    
+                   
     $file_open = fopen($_FILES['excel']['tmp_name'], "r");
-                    
+               
     $count = 0;
     
     if ($file_open) 
         {
-                       
-            try {
-                   $dbh = new PDO('mysql:host=localhost;dbname='.$bd_test, $user_test, $pass_test);
+            try 
+                {
+                    $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
                     
                     while(($csv = fgetcsv($file_open, 1000, ",")) !== false)
-                         {
+                        {
                             $exp = $csv[0];
-
+                            
                             $sep=explode(";",$exp);
-
-                            $count = 0;
-
-                            $data=array();
-
-                            if($count > 0)
-                                {
+                            
+                            $count++;
+                            
+                            if($count>0)
+                             {  
                                     $dates = addslashes($sep[0]);
                     
                                     $telephone = addslashes($sep[1]);
@@ -71,8 +69,6 @@
                                     $donnee[$i]['passwords']=$passwords;
 
                                     $donnee[$i]['optionsRadios']=$optionsRadios;
-
-
                                 }
                         }
                     $last = $dbh->lastInsertId();
