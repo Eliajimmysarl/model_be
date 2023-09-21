@@ -69,25 +69,24 @@
                                     $donnee[$i]['passwords']=$passwords;
 
                                     $donnee[$i]['optionsRadios']=$optionsRadios;
-                                }
-                        }
-                    $last = $dbh->lastInsertId();
+
+                                    $data["excel"][]  = $donnee ;
+
+                                    $last = $dbh->lastInsertId();
               
-                    if($last==0)
-                        {
-                            $data["code"]  = 400;
-            
-                            $data["message"]  = "Ressource not created";
-
-                            $data["excel"]  = $donnee ;
-                        }
-                    else
-                        {
-                            $data["code"]  = 201;
-            
-                            $data["message"]  = "Ressource created";
-
-                            $data["excel"]  = $donnee;
+                                    if($last==0)
+                                        {
+                                            $data["code"]  = 400;
+                            
+                                            $data["message"]  = "Ressource not created";
+                                        }
+                                    else
+                                        {
+                                            $data["code"]  = 201;
+                            
+                                            $data["message"]  = "Ressource created";
+                                        }
+                                }
                         }
                         
                     echo json_encode($data);
