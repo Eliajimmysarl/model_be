@@ -38,6 +38,10 @@
                 { 
                     require_once("import_excel.php"); 
                 }
+            else if(isSet($_GET['image']))
+                { 
+                    require_once("import_image.php"); 
+                }
             else
                 {
                     require_once("ajout_un_seul.php");   
