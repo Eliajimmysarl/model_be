@@ -59,7 +59,7 @@
 
                     $data["email"]  = "$email";
 
-                    $data["date"]  = "$dates";
+                    $data["dates"]  = "$dates";
 
                     $data["telephone"]  = "$telephone";
 
