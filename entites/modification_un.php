@@ -1,52 +1,74 @@
 <?php
-//Recuperer le flux JSON envoyer
-$myjson=file_get_contents('php://input');
 
-//Decoder le flux JSON
-$json_decode= json_decode($myjson);
+    $myjson=file_get_contents('php://input');
 
-$text=$json_decode->text; //texte
-$select=$json_decode->select; //texte
-$email=$json_decode->email; //texte
-$date=$json_decode->date; //texte
-$telephone=$json_decode->telephone; //texte
-$optionsRadios=$json_decode->optionsRadios; //texte
+    $json_decode= json_decode($myjson);
 
+    $texte=$json_decode->texte;
 
-//Insertion dans la base des données
-try {
-$dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
-$stmt = $dbh->prepare("UPDATE metamodele SET text=?, select=?, email=? date=?, telephone=?, optionsRadios=? WHERE id=?");
+    $selec=$json_decode->selec;
 
+    $dates=$json_decode->dates;
 
-$stmt->bindParam(1, $text);
-$stmt->bindParam(2, $select);
-$stmt->bindParam(3, $email);
-$stmt->bindParam(4, $date);
-$stmt->bindParam(5, $telephone);
-$stmt->bindParam(6, $optionsRadios);
-$stmt->bindParam(7, $id);
+    $telephone=$json_decode->telephone;
 
-$stmt->execute();
+    $email=$json_decode->email; 
 
-$data["code"]  = 200;
-$data["id"]  = "$last";
-$data["text"]  = "$text";
-$data["select"]  = "$select";
-$data["email"]  = "$email";
-$data["date"]  = "$date";
-$data["telephone"]  = "$telephone";
-$data["optionsRadios"]  = "$optionsRadios";
+    $passwords=$json_decode->passwords;
 
+    $optionsRadios=$json_decode->optionsRadios; 
 
-echo json_encode( $data );
- 
-  
-    $dbh = null;
-        
-    }
-catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-}
+    try {
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+
+            $stmt = $dbh->prepare("UPDATE test SET texte=?, selec=?,  dates=?, telephone=?, email=?, passwords=?, optionsRadios=? WHERE id=?");
+
+            $stmt->bindParam(1, $texte);
+
+            $stmt->bindParam(2, $selec);
+
+            $stmt->bindParam(3, $dates);
+
+            $stmt->bindParam(4, $telephone);
+
+            $stmt->bindParam(5, $email);
+
+            $stmt->bindParam(6, $passwords);
+            
+            $stmt->bindParam(7, $optionsRadios);
+
+            $stmt->bindParam(8, $id);
+
+            $stmt->execute();
+
+            $data["code"]  = 200;
+
+            $data["id"]  = "$last";
+
+            $data["texte"]  = "$texte";
+
+            $data["selec"]  = "$selec";
+
+            $data["dates"]  = "$dates";
+
+            $data["telephone"]  = "$telephone";
+
+            $data["email"]  = "$email";
+
+            $data["passwords"]  = "$passwords";
+            
+            $data["optionsRadios"]  = "$optionsRadios";
+
+            echo json_encode( $data );
+            
+                $dbh = null;
+                    
+        }
+    catch (PDOException $e) 
+        {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+
+            die();
+
+        }
 ?>  
