@@ -1,9 +1,9 @@
 <?php
 try {
    
-$dbh = new PDO('mysql:host=localhost;dbname='.$db, $user, $pass);
+$dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
 
-$stmt = $dbh->prepare("SELECT *FROM metamodele   ORDER BY id");
+$stmt = $dbh->prepare("SELECT *FROM test   ORDER BY id");
 
 $stmt->execute();
 
@@ -12,7 +12,7 @@ $datas = array();
 while($resultat=$stmt->fetch(PDO::FETCH_ASSOC)) 
     {
         $datas["code"]  = 200;
-        $datas['metamodele'][]=$resultat;
+        $datas['entite'][]=$resultat;
     }
         
 echo json_encode($datas);
