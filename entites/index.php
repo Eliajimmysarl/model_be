@@ -17,8 +17,8 @@
                 }
             else if($methode=='GET')
                 {
-                    require_once("recuperation_un.php");   
-                }
+                    require_once("recuperation_un_seul.php");   
+                }    
             else if($methode=='DELETE')
                 {
                     require_once("suppression_un.php");        
