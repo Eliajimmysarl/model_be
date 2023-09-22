@@ -12,7 +12,7 @@ $datas = array();
 while($resultat=$stmt->fetch(PDO::FETCH_ASSOC)) 
     {
         $datas["code"]  = 200;
-        $datas['test'][]=$resultat;
+        $datas['entite'][]=$resultat;
     }
         
 echo json_encode($datas);
