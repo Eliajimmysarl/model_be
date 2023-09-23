@@ -38,21 +38,11 @@
                     $stmt->execute();
                 }
             
-            $last = $dbh->lastInsertId();
-              
-            if($last==0)
-                {
-                    $data["code"]  = 400;
+          
+            $data["code"]  = 200;
 
-                    $data["message"]  = "Ressource not created";
-                }
-            else
-                {
-                    $data["code"]  = 201;
-
-                    $data["message"]  = "Ressource created";
-                }
-            
+            $data["message"]  = "Ressource created";
+                
             echo json_encode($data);
         
             $dbh = null; 
