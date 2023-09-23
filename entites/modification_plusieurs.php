@@ -13,9 +13,9 @@
                 {
                     $id = $textes[$i][0];
 
-                    $text = $textes[$i][1];
+                    $texte = $textes[$i][1];
                
-                    $select = $textes[$i][2];
+                    $selec = $textes[$i][2];
 
                     $dates = $textes[$i][3];
 
