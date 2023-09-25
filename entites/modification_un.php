@@ -1,9 +1,5 @@
 <?php
 
-    $myjson=file_get_contents('php://input');
-
-    $json_decode= json_decode($myjson);
-
     $texte=$json_decode->texte;
 
     $selec=$json_decode->selec;
