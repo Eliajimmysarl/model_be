@@ -14,14 +14,8 @@
     $userId=$json_decode->user_id;
 
     $uri = $authority."/token/";
-    
-    $data = array(
         
-            'user_id' => $userId
-
-        );
-    
-    $result=curl_get_data($uri,$token,$data);
+    $result=curl_get($uri,$token);
 
     $obj = json_decode($result);
         
