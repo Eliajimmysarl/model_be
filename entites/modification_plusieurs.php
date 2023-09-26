@@ -2,6 +2,10 @@
 
     $textes=$json_decode->text;
 
+    $dateUpdate = date("Y-m-d");
+    
+    $heureUpdate = date("H:i:s");
+
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
 
@@ -19,7 +23,7 @@
                
                     $email = $textes[$i][5];
 
-                    $stmt = $dbh->prepare("UPDATE test SET texte=?, selec=?,  dates=?, telephone=?, email=? WHERE id=$id");
+                    $stmt = $dbh->prepare("UPDATE test SET texte=?, selec=?,  dates=?, telephone=?, email=?, date_update=?,  heure_update=? WHERE id=$id");
 
                     $stmt->bindParam(1, $texte);
 
@@ -30,6 +34,10 @@
                     $stmt->bindParam(4, $telephone);
 
                     $stmt->bindParam(5, $email);
+
+                    $stmt->bindParam(6, $dateUpdate);
+
+                    $stmt->bindParam(7, $heureUpdate);
 
                     $stmt->execute();
                 }

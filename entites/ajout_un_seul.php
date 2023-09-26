@@ -1,9 +1,5 @@
 <?php
 
-    $myjson=file_get_contents('php://input');
-
-    $json_decode= json_decode($myjson);
-
     $texte=$json_decode->texte;
 
     $selec=$json_decode->selec; 
@@ -18,10 +14,14 @@
 
     $optionsRadios=$json_decode->optionsRadios;
 
+    $dateCreation = date("Y-m-d");
+    
+    $heureCreation = date("H:i:s");
+
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
 
-            $stmt = $dbh->prepare("INSERT INTO test (texte, selec, dates, telephone, email, passwords, optionsRadios) VALUES (?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO test (texte, selec, dates, telephone, email, passwords, optionsRadios,  date_creation, heure_creation) VALUES (?,?,?,?,?,?,?,?,?)");
 
             $stmt->bindParam(1, $texte);
 
@@ -36,6 +36,10 @@
             $stmt->bindParam(6, $passwords);
 
             $stmt->bindParam(7, $optionsRadios);
+
+            $stmt->bindParam(8, $dateCreation);
+             
+            $stmt->bindParam(9, $heureCreation);
 
             $stmt->execute();
 

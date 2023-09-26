@@ -2,6 +2,10 @@
 
     $textes=$json_decode->text;
 
+    $dateCreation = date("Y-m-d");
+    
+    $heureCreation = date("H:i:s");
+
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
 
@@ -11,11 +15,15 @@
                
                     $select = $textes[$i][1];
 
-                    $stmt = $dbh->prepare("INSERT INTO test (texte, selec) VALUES (?,?)");
+                    $stmt = $dbh->prepare("INSERT INTO test (texte, selec, , date_creation, heure_creation) VALUES (?,?,?,?)");
 
                     $stmt->bindParam(1, $text);
         
-                    $stmt->bindParam(2, $select);  
+                    $stmt->bindParam(2, $select);
+                    
+                    $stmt->bindParam(3, $dateCreation);
+             
+                    $stmt->bindParam(4, $heureCreation);
 
                     $stmt->execute();
                 }

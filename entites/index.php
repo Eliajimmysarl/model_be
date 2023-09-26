@@ -11,8 +11,6 @@
 
     $json_decode= json_decode($myjson);
 
-    $userId=$json_decode->user_id;
-
     $uri = $authority."/token/";
         
     $result=curl_get($uri,$token);
@@ -79,7 +77,16 @@
                 }
             else if($methode=='GET')
                 {
-                    require_once("recuperation_plusieurs.php"); 
+                    $selections=$json_decode->selec;
+
+                    if(isSet($selections))
+                        {
+                            require_once("recuperation_plusieurs.php");
+                        }
+                    else
+                        {
+                            require_once("recuperation_avec_jointure.php");
+                        } 
                 }  
             else if($methode=='PUT')
                 {

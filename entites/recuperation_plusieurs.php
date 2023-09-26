@@ -9,12 +9,23 @@
 
             $datas = array();
 
-            while($resultat=$stmt->fetch(PDO::FETCH_ASSOC)) 
-                {
-                    $datas["code"]  = 200;
-                    $datas['entite'][]=$resultat;
+            $nombreLigne = $stmt->rowCount();
+            
+            if($nombreLigne > 0)
+                { 
+                    while($resultat=$stmt->fetch(PDO::FETCH_ASSOC)) 
+                        {
+                            $datas["code"]  = 200;
+                            
+                            $datas['entite'][]=$resultat;
+                        }
                 }
-                    
+            else
+                {
+                    $datas["code"]  = 400;
+        
+                    $datas['token'][]="Ressource not found";
+                }   
             echo json_encode($datas);
             
         }
