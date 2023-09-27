@@ -15,7 +15,7 @@
                
                     $select = $textes[$i][1];
 
-                    $stmt = $dbh->prepare("INSERT INTO test (texte, selec, , date_creation, heure_creation) VALUES (?,?,?,?)");
+                    $stmt = $dbh->prepare("INSERT INTO test (texte, selec, date_creation, heure_creation) VALUES (?,?,?,?)");
 
                     $stmt->bindParam(1, $text);
         
