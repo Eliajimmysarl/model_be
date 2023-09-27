@@ -6,7 +6,7 @@
 
    try
       {
-         $dbh = new PDO('mysql:host=localhost;dbname='.$db, $user, $pass);
+         $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
 
          $stmt = $dbh->prepare("SELECT test.id, test.telephone, test.selec, test.dates, test.email, test.optionsRadios, selections.id, selections.nom, options.id, options.nom FROM `test` INNER JOIN selections ON test.selec=selections.id INNER JOIN options ON test.optionsRadios=options.id WHERE test.selec= ? AND test.optionsRadios= ? ");
 
