@@ -49,6 +49,19 @@
                 {
                     $data["code"]  = 400;
 
+                    $data["texte"]  = "$texte";
+
+                    $data["selec"]  = "$selec";
+
+                    $data["email"]  = "$email";
+
+                    $data["dates"]  = "$dates";
+
+                    $data["telephone"]  = "$telephone";
+
+                    $data["optionsRadios"]  = "$optionsRadios";
+
+
                     $data["message"]  = "Ressource not created";
                 }
             else
@@ -57,9 +70,9 @@
 
                     $data["id"]  = "$last";
 
-                    $data["text"]  = "$texte";
+                    $data["texte"]  = "$texte";
 
-                    $data["select"]  = "$selec";
+                    $data["selec"]  = "$selec";
 
                     $data["email"]  = "$email";
 
