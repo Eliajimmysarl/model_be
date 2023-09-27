@@ -81,11 +81,11 @@
 
                     if(isSet($selections))
                         {
-                            require_once("recuperation_plusieurs.php");
+                            require_once("recuperation_avec_jointure.php");
                         }
                     else
                         {
-                            require_once("recuperation_avec_jointure.php");
+                            require_once("recuperation_plusieurs.php");
                         } 
                 }  
             else if($methode=='PUT')
