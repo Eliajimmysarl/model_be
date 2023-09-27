@@ -27,7 +27,7 @@
                   {
                      $datas["code"]  = 200;
 
-                     $datas['test'][]=$resultat;
+                     $datas['entite'][]=$resultat;
                   }
             }
          else
