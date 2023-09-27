@@ -37,11 +37,11 @@
             
             $stmt->bindParam(7, $optionsRadios);
 
-            $stmt->bindParam(8, $id);
-
             $stmt->bindParam(8, $dateUpdate);
 
             $stmt->bindParam(9, $heureUpdate);
+
+            $stmt->bindParam(10, $id);
 
             $stmt->execute();      
 
