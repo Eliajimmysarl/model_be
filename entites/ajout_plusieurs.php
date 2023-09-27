@@ -34,11 +34,19 @@
                 {
                     $data["code"]  = 400;
 
+                    $data["text"]  = $text;
+
+                    $data["select"]  = $select;
+
                     $data["message"]  = "Ressource not created";
                 }
             else
                 {
                     $data["code"]  = 201;
+
+                    $data["text"]  = $text;
+
+                    $data["select"]  = $select;
 
                     $data["message"]  = "Ressource created";
                 }
