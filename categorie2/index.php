@@ -30,77 +30,18 @@
     else
         {
             $methode=$_SERVER['REQUEST_METHOD'];
-                
-            if (isSet($_GET['id']))
+   
+            if($methode=='GET')
                 {
-                    $id=$_GET['id'];
-                
-                    if($methode=='PUT')
-                        {
-                            require_once("modification_un.php"); 
-                        }
-                    else if($methode=='GET')
-                        {
-                            require_once("recuperation_un_seul.php");   
-                        }    
-                    else if($methode=='DELETE')
-                        {
-                            require_once("suppression_un.php");        
-                        }
-                    else
-                        {
-                            $data["code"]  = 400;
-
-                            $data["message"]  = "Erreur 400 :  Votre requete est POST et a un parametre id dans l'URL";
-                        
-                            echo json_encode($data);     
-                        }
-                }
-            else if($methode=='POST')
-                {
-                    if(isSet($_GET['plusieurs']))
-                        { 
-                            require_once("ajout_plusieurs.php"); 
-                        }
-                    else if(isSet($_GET['excel']))
-                        { 
-                            require_once("import_excel.php"); 
-                        }
-                    else if(isSet($_GET['image']))
-                        { 
-                            require_once("import_image.php"); 
-                        }
-                    else
-                        {
-                            require_once("ajout_un_seul.php");   
-                        }
-                }
-            else if($methode=='GET')
-                {
-                    $selections=$json_decode->selec;
-
-                    if(isSet($selections))
-                        {
-                            require_once("recuperation_plusieurs.php");
-                        }
-                    else
-                        {
-                            require_once("recuperation_avec_jointure.php");
-                        } 
+              
+                    require_once("recuperation_plusieurs.php");
+                       
                 }  
-            else if($methode=='PUT')
-                {
-                    require_once("modification_plusieurs.php"); 
-                }
-            else if($methode=='DELETE')
-                {
-                    require_once("suppression_plusieurs.php"); 
-                }
             else 
                 {
                     $data["code"]  = 405;
 
-                    $data["message"]  = "Erreur 405 :  Abscence de la méthode : POST, GET, PUT, DELETE";
+                    $data["message"]  = "Erreur 405 :  Abscence de la méthode : GET";
                 
                     echo json_encode($data);
 
